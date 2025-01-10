@@ -33,7 +33,11 @@ export function birdRoute() {
         case 0:
           updateStoryline(birdStoryText.peckTheFemale);
 <<<<<<< HEAD
+<<<<<<< HEAD
           takeDamage('Female Bird', 1);
+=======
+          takeDamage(1)
+>>>>>>> parent of 25b0b23 (fixes)
 =======
           takeDamage(1)
 >>>>>>> parent of 25b0b23 (fixes)
@@ -140,6 +144,10 @@ function takeDamage(name, amount){
 } 
   
   
+<<<<<<< HEAD
+=======
+  
+>>>>>>> parent of 25b0b23 (fixes)
   
   }
 
