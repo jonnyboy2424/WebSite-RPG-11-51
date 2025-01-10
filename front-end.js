@@ -113,7 +113,16 @@ export function updateStoryline (param) {
   
 }
 
-
+export function cigaretteDecrement (param) {
+  if (cigarettesRemaining === 0) {
+    cigarettesLeft.innerText = `Cigarettes Remaining: None`
+    birdStats.skills.splice(2,1) // look into this
+  } else {
+    cigarettesRemaining -= param;
+  }
+  cigarettesLeft.innerText = `Cigarettes Remaining: ${cigarettesRemaining}`
+  console.log(`You gave a cigarette away. Now you have ${cigarettesRemaining}`)
+}
 
 // functions for the pop-up menus
 
