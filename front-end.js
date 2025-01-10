@@ -9,7 +9,7 @@ export let healthBar = document.getElementById("health-bar")
 const gameHeader = document.getElementById("currentGame")
 const gameOverContainer = document.getElementById("gameOverScreen")
 const miscContainer = document.getElementById("misc-container")
-
+let health = 0;
 let skills = [];
 import {birdRoute} from './bird-route.js'
 import {woodenBoyStats, pepperStats, furballStats, birdStats} from "./character-stats.js"
@@ -107,27 +107,11 @@ function beginRoute (param){
 
 // functions for Game Mechanics 
 
-
-export function takeDamage(param, health, damageTaken) {
-  health -= damageTaken;
-  if (health <= 0) {
-    console.log("You have zero health")
-  characterSelectScreen.style.display= "block"
-  birdsAdventure.style.display="none";
-  gameOverContainer.style.visibility="visible"
-  moveContainer.innerHTML = ""
-  document.getElementById("gameOverText").innerText =  `Game Over. Your actions led you to be killed by ${param}`
-} else {
-  healthBar.innerHTML = `<p> Health Left: ${health} </p>`
-}}
-
-
 export function updateStoryline (param) {
   let storyline = document.getElementById("story-narration")
   storyline.innerText = param
   
 }
-
 
 
 
