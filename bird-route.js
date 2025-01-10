@@ -1,10 +1,10 @@
 
 import { birdStoryText } from "./storylineText.js";
 import {birdStats} from "./character-stats.js"
-import {takeDamage, updateStoryline} from "./front-end.js"
+import {updateStoryline, healthBar} from "./front-end.js"
 export function birdRoute() {
   let cigarettesRemaining = 12;
-  let powerRanking = 0
+  let powerRanking = 0;
   let storyline = document.getElementById("story-narration")
   const peckAction = document.getElementById("Peck")
   const cigaretteOffer = document.getElementById('Cigarette Offer')
@@ -14,7 +14,8 @@ export function birdRoute() {
   cigaretteOffer2x.classList.add("unlearnedMoves")
   const cigarettesLeft = document.getElementById('cigaretteTotal')
   let currentStoryIndex = 0;
-  let health = birdStats.healthLeft
+  let health = 6
+  
   
   //bird exclusive game mechanic 
   function cigaretteDecrement (param) {
@@ -28,7 +29,11 @@ export function birdRoute() {
     console.log(`You gave a cigarette away. Now you have ${cigarettesRemaining}`)
   }
 
-
+//take damage game mechanic
+function takeDamage (damage) {
+  health -= damage;
+  healthBar.innerHTML = `<p> Health Left: ${health} </p>`
+}
 
   cigarettesLeft.innerHTML = `<p> Cigarettes Remaining: ${cigarettesRemaining} </p>`
   
@@ -38,7 +43,7 @@ export function birdRoute() {
       switch(currentStoryIndex) {
         case 0:
           updateStoryline(birdStoryText.peckTheFemale);
-          takeDamage('Female Bird', health, 1);
+          takeDamage(1);
           break;
         case 1:
           updateStoryline(birdStoryText.peckBuckyAdams);
@@ -51,6 +56,7 @@ export function birdRoute() {
           break;
         case 4:
           updateStoryline(birdStoryText.peckDarcy);
+          takeDamage(1)
           break;
         case 5:
           updateStoryline(birdStoryText.peckCat);

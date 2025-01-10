@@ -108,19 +108,6 @@ function beginRoute (param){
 // functions for Game Mechanics 
 
 
-export function takeDamage(param, health, damageTaken) {
-  health -= damageTaken;
-  if (health <= 0) {
-    console.log("You have zero health")
-  characterSelectScreen.style.display= "block"
-  birdsAdventure.style.display="none";
-  gameOverContainer.style.visibility="visible"
-  moveContainer.innerHTML = ""
-  document.getElementById("gameOverText").innerText =  `Game Over. Your actions led you to be killed by ${param}`
-} else {
-  healthBar.innerHTML = `<p> Health Left: ${health} </p>`
-}}
-
 
 export function updateStoryline (param) {
   let storyline = document.getElementById("story-narration")
