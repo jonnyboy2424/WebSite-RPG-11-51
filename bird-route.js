@@ -1,11 +1,7 @@
 
 import { birdStoryText } from "./storylineText.js";
 import {birdStats} from "./character-stats.js"
-<<<<<<< HEAD
-import {updateStoryline} from "./front-end.js"
-=======
-import {takeDamage, updateStoryline, cigaretteDecrement} from "./front-end.js"
->>>>>>> parent of 25b0b23 (fixes)
+import {takeDamage, updateStoryline} from "./front-end.js"
 export function birdRoute() {
   let cigarettesRemaining = 12;
   let powerRanking = 0
@@ -18,9 +14,19 @@ export function birdRoute() {
   cigaretteOffer2x.classList.add("unlearnedMoves")
   const cigarettesLeft = document.getElementById('cigaretteTotal')
   let currentStoryIndex = 0;
-  let health = 6;
+  let health = birdStats.healthLeft
   
-  
+  //bird exclusive game mechanic 
+  function cigaretteDecrement (param) {
+    if (cigarettesRemaining === 0) {
+      cigarettesLeft.innerText = `Cigarettes Remaining: None`
+      document.getElementById(``)
+    } else {
+      cigarettesRemaining -= param;
+      cigarettesLeft.innerText = `Cigarettes Remaining: ${cigarettesRemaining}`
+    }
+    console.log(`You gave a cigarette away. Now you have ${cigarettesRemaining}`)
+  }
 
 
 
@@ -32,19 +38,10 @@ export function birdRoute() {
       switch(currentStoryIndex) {
         case 0:
           updateStoryline(birdStoryText.peckTheFemale);
-<<<<<<< HEAD
-<<<<<<< HEAD
-          takeDamage('Female Bird', 1);
-=======
-          takeDamage(1)
->>>>>>> parent of 25b0b23 (fixes)
-=======
-          takeDamage(1)
->>>>>>> parent of 25b0b23 (fixes)
+          takeDamage('Female Bird', health, 1);
           break;
         case 1:
           updateStoryline(birdStoryText.peckBuckyAdams);
-          takeDamage('Bucky', 1);
           break;
         case 2:
           updateStoryline(birdStoryText.peckFamily);
@@ -67,7 +64,7 @@ export function birdRoute() {
         case 8:
           updateStoryline(birdStoryText.peckMrHeart);
           break;}
-
+          currentStoryIndex++
 
 })
 
@@ -75,7 +72,7 @@ export function birdRoute() {
     switch(currentStoryIndex) {
           case 0:
             updateStoryline(birdStoryText.cigTheFemale);
-            takeDamage(1)
+            cigaretteDecrement(1);
             break;
           case 1:
             updateStoryline(birdStoryText.cigBuckyAdams);
@@ -138,16 +135,9 @@ export function birdRoute() {
 })
   
   
-function takeDamage(name, amount){
-  health - amount;
-  console.log(`You took ${amount} damage from ${name}`)
-} 
   
   
-<<<<<<< HEAD
-=======
-  
->>>>>>> parent of 25b0b23 (fixes)
+
   
   }
 
