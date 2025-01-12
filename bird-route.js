@@ -14,7 +14,7 @@ export function birdRoute() {
   cigaretteOffer2x.classList.add("unlearnedMoves")
   const cigarettesLeft = document.getElementById('cigaretteTotal')
   let currentStoryIndex = 0;
-  let health = 6
+  let health = birdStats.healthLeft
   
   
   //bird exclusive game mechanic 
