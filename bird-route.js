@@ -53,6 +53,7 @@ function takeDamage (damage) {
           break;
         case 3:
           updateStoryline(birdStoryText.peckFBI);
+          peck2x.classList.remove("unlearnedMoves");
           break;
         case 4:
           updateStoryline(birdStoryText.peckDarcy);
@@ -60,6 +61,7 @@ function takeDamage (damage) {
           break;
         case 5:
           updateStoryline(birdStoryText.peckCat);
+          takeDamage(2)
           break;
         case 6:
           updateStoryline(birdStoryText.peckMrTabacco);
@@ -82,9 +84,11 @@ function takeDamage (damage) {
             break;
           case 1:
             updateStoryline(birdStoryText.cigBuckyAdams);
+            cigaretteOffer2x.classList.remove("unlearnedMoves");
             break;
           case 2:
             updateStoryline(birdStoryText.cigFamily);
+            takeDamage(1);
             break;
           case 3:
             updateStoryline(birdStoryText.cigFBIAgent);
@@ -116,6 +120,7 @@ function takeDamage (damage) {
       switch(currentStoryIndex) {
         case 2:
           updateStoryline(birdStoryText.cigFamilyTwice);
+          takeDamage(1);
           break;
         case 3:
           updateStoryline(birdStoryText.cigFBIAgentTwice);
@@ -134,10 +139,33 @@ function takeDamage (damage) {
           break;
         case 8:
           updateStoryline(birdStoryText.cigMrHeartTwice);
+          takeDamage(1);
           break;
 }
   cigaretteDecrement(2);
   currentStoryIndex++;
+})
+
+peck2x.addEventListener("click", function(){
+  switch(currentStoryIndex) {
+    case 4:
+      updateStoryline(birdStoryText.peckDarcyTwice);
+      break;
+    case 5:
+      updateStoryline(birdStoryText.peckCatTwice);
+      break;
+    case 6:
+      updateStoryline(birdStoryText.peckTabaccoTwice);
+      break;
+    case 7:
+      updateStoryline(birdStoryText. peckDoomsdayPrepperTwice);
+      break;
+    case 8:
+      updateStoryline(birdStoryText.peckMrHeartTwice);
+      takeDamage(1);
+      break;
+};
+currentStoryIndex++;
 })
   
   

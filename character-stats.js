@@ -21,9 +21,9 @@ export let furballStats = {
   location: "Mythical Forest",
   backgroundColor: "Green",
   playerCharacter: "Furball",
-  skills: ['Kick', 'Ice Breath', 'Ice Breath', 'Ice Breath', 'Gorge', 'Gorge', 'Solar Flare'] ,
+  skills: [`Left`, `Center`,`Right,`] ,
   headerIcon: `<img class="character-select-img" src="images/furball.webp">`}
-  // Traditional JRPG route. Learns moves. Gets best ending if he uses Galaxia Blast on the Mountain Dragon
+  // Working off of hints, you need to find the Dragon's Den and kill him. Throughout the journey, you collect Magic Points. 
 
 export let birdStats = {
   healthLeft: 6,
