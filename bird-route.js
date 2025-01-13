@@ -37,10 +37,21 @@ export function birdRoute() {
     cigaretteOffer.classList.add('unlearnedMoves')
   }
 
+  function cigaretteGift(){
+    cigarettesRemaining++;
+    cigarettesLeft.innerText = `Cigarettes Remaining: ${cigarettesRemaining}`
+  }
+
 //take damage game mechanic
 function takeDamage (damage) {
   health -= damage;
   healthBar.innerHTML = `<p> Health Left: ${health} </p>`
+}
+
+// heal game mechanic
+function heal(){
+  health++;
+  healthBar.innerHTML = `<p> Health Left: ${health} </p>`;
 }
 
   cigarettesLeft.innerHTML = `<p> Cigarettes Remaining: ${cigarettesRemaining} </p>`
@@ -70,7 +81,7 @@ function takeDamage (damage) {
           break;
         case 5:
           updateStoryline(birdStoryText.peckCat);
-          takeDamage(2)
+          takeDamage(2);
           break;
         case 6:
           updateStoryline(birdStoryText.peckMrTabacco);
@@ -108,12 +119,15 @@ function takeDamage (damage) {
             break;
           case 5:
             updateStoryline(birdStoryText.cigCat);
+            takeDamage(2);
             break;
           case 6:
             updateStoryline(birdStoryText.cigTabacco);
+            heal()
             break;
           case 7:
             updateStoryline(birdStoryText.cigZombiePrepper);
+            takeDamage(1);
             break;
           case 8:
             updateStoryline(birdStoryText.cigMrHeart);
@@ -140,12 +154,14 @@ function takeDamage (damage) {
           break;
         case 5:
           updateStoryline(birdStoryText.cigCatTwice);
+          takeDamage(2);
           break;
         case 6:
           updateStoryline(birdStoryText.cigTabaccoTwice);
           break;
         case 7:
           updateStoryline(birdStoryText.cigZombiePrepperTwice);
+          takeDamage(1);
           break;
         case 8:
           updateStoryline(birdStoryText.cigMrHeartTwice);
@@ -163,6 +179,7 @@ peck2x.addEventListener("click", function(){
       break;
     case 5:
       updateStoryline(birdStoryText.peckCatTwice);
+      cigaretteGift()
       break;
     case 6:
       updateStoryline(birdStoryText.peckTabaccoTwice);
