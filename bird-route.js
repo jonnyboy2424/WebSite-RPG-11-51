@@ -29,6 +29,14 @@ export function birdRoute() {
     console.log(`You gave a cigarette away. Now you have ${cigarettesRemaining}`)
   }
 
+  function takeAllCigarettes() {
+    cigarettesRemaining -= cigarettesRemaining;
+    cigarettesLeft.innerText = `Cigarettes Remaining: None`
+    document.getElementById(``);
+    if (cigaretteOffer2x) {cigaretteOffer2x.classList.add("unlearnedMoves");}
+    cigaretteOffer.classList.add('unlearnedMoves')
+  }
+
 //take damage game mechanic
 function takeDamage (damage) {
   health -= damage;
@@ -44,6 +52,7 @@ function takeDamage (damage) {
         case 0:
           updateStoryline(birdStoryText.peckTheFemale);
           takeDamage(1);
+          
           break;
         case 1:
           updateStoryline(birdStoryText.peckBuckyAdams);
@@ -65,6 +74,7 @@ function takeDamage (damage) {
           break;
         case 6:
           updateStoryline(birdStoryText.peckMrTabacco);
+          takeAllCigarettes();
           break;
         case 7:
           updateStoryline(birdStoryText.peckDoomsdayPrepper);
