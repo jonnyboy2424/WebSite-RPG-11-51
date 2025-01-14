@@ -10,6 +10,8 @@ export function birdRoute() {
   const cigaretteOffer = document.getElementById('Cigarette Offer')
   const peck2x = document.getElementById("Peck 2x")
   const cigaretteOffer2x = document.getElementById("Cigarette Offer 2x")
+  const continueGame = document.getElementById("Continue")
+  continueGame.classList.add("unlearnedMoves")
   peck2x.classList.add("unlearnedMoves")
   cigaretteOffer2x.classList.add("unlearnedMoves")
   const cigarettesLeft = document.getElementById('cigaretteTotal')
@@ -54,6 +56,15 @@ function heal(){
   healthBar.innerHTML = `<p> Health Left: ${health} </p>`;
 }
 
+// continue function that removes all moves and leaves only 'continue'
+function choiceJudgement(){
+  continueGame.classList.remove("unlearnedMoves");
+  peckAction.classList.add("unlearnedMoves");
+  cigaretteOffer.classList.add("unlearnedMoves");
+  peck2x.classList.add("unlearnedMoves");
+  cigaretteOffer2x.classList.add("unlearnedMoves");
+}
+
   cigarettesLeft.innerHTML = `<p> Cigarettes Remaining: ${cigarettesRemaining} </p>`
   
   storyline.innerText = birdStoryText.startingLine
@@ -92,7 +103,14 @@ function heal(){
           break;
         case 8:
           updateStoryline(birdStoryText.peckMrHeart);
-          break;}
+          break;
+        case 9:
+          updateStoryline(birdStoryText.peckGasStationClerk);
+          choiceJudgement();
+          break;
+        
+        }
+
           currentStoryIndex++
 
 })
@@ -132,6 +150,10 @@ function heal(){
           case 8:
             updateStoryline(birdStoryText.cigMrHeart);
             break;
+          case 9:
+            updateStoryline(birdStoryText.cigGasStationClerk);
+            choiceJudgement();
+            break;
   
   
         }
@@ -167,6 +189,10 @@ function heal(){
           updateStoryline(birdStoryText.cigMrHeartTwice);
           takeDamage(1);
           break;
+        case 9:
+          updateStoryline(birdStoryText.cigGasStationClerkTwice);
+          choiceJudgement();
+          break;
 }
   cigaretteDecrement(2);
   currentStoryIndex++;
@@ -191,7 +217,13 @@ peck2x.addEventListener("click", function(){
       updateStoryline(birdStoryText.peckMrHeartTwice);
       takeDamage(1);
       break;
+    case 9:
+      updateStoryline(birdStoryText.peckGasStationClerkTwice);
+      choiceJudgement();
+      break; 
 };
+
+
 currentStoryIndex++;
 })
   
