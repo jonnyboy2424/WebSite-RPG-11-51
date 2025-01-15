@@ -4,7 +4,6 @@ import {birdStats} from "./character-stats.js"
 import {updateStoryline, healthBar} from "./front-end.js"
 export function birdRoute() {
   let cigarettesRemaining = 12;
-  let powerRanking = 0;
   let storyline = document.getElementById("story-narration")
   const peckAction = document.getElementById("Peck")
   const cigaretteOffer = document.getElementById('Cigarette Offer')
@@ -17,7 +16,8 @@ export function birdRoute() {
   const cigarettesLeft = document.getElementById('cigaretteTotal')
   let currentStoryIndex = 0;
   let health = birdStats.healthLeft
-  
+  let totalFriendshipPoints = 0; 
+   
   
   //bird exclusive game mechanic 
   function cigaretteDecrement (param) {
@@ -56,6 +56,30 @@ function heal(){
   healthBar.innerHTML = `<p> Health Left: ${health} </p>`;
 }
 
+// this function determines the ending
+function endingDetermine(friendshipPoints){
+  const requiredFriendshipPoints = 4; 
+  
+  if (friendshipPoints < requiredFriendshipPoints && cigarettesRemaining > 0){
+    cigaretteDecrement(1)
+    updateStoryline(birdStoryText.badEnding);
+  }
+  else if (friendshipPoints < requiredFriendshipPoints && cigarettesRemaining === 0){
+    updateStoryline(birdStoryText.badEndingWithNoCig)
+  }
+  else if (friendshipPoints >= requiredFriendshipPoints && birdGotCigarette){
+    updateStoryline(birdStoryText.goodEndingWithFemaleBird);
+    currentStoryIndex++;
+    continueGame.classList.add("unlearnedMoves");
+    peckAction.classList.remove("unlearnedMoves");
+    cigaretteOffer.classList.remove("unlearnedMoves");
+    peck2x.classList.remove("unlearnedMoves");
+    cigaretteOffer2x.classList.remove("unlearnedMoves");
+  }
+}
+
+
+
 // continue function that removes all moves and leaves only 'continue'
 function choiceJudgement(){
   continueGame.classList.remove("unlearnedMoves");
@@ -68,6 +92,14 @@ function choiceJudgement(){
   cigarettesLeft.innerHTML = `<p> Cigarettes Remaining: ${cigarettesRemaining} </p>`
   
   storyline.innerText = birdStoryText.startingLine
+
+    continueGame.addEventListener("click", function(){
+      switch(currentStoryIndex){
+        case 10:
+          endingDetermine(totalFriendshipPoints)
+          break;
+      }
+    })
    
     peckAction.addEventListener("click", function(){
       switch(currentStoryIndex) {
@@ -120,6 +152,7 @@ function choiceJudgement(){
           case 0:
             updateStoryline(birdStoryText.cigTheFemale);
             cigaretteDecrement(1);
+            let birdGotCigarette = true;
             break;
           case 1:
             updateStoryline(birdStoryText.cigBuckyAdams);
