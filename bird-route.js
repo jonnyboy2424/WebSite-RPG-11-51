@@ -91,13 +91,13 @@ export function birdRoute() {
 
   storyline.innerText = birdStoryText.startingLine
 
-  continueGame.addEventListener("click", function () {
+  /* continueGame.addEventListener("click", function () {
     switch (currentStoryIndex) {
       case 10:
         endingDetermine(totalFriendshipPoints)
         break;
     }
-  })
+  }) */
 
   peckAction.addEventListener("click", function () {
     switch (currentStoryIndex) {
