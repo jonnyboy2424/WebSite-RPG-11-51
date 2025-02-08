@@ -30,5 +30,5 @@ export let birdStats = {
   location: "Gas Station",
   backgroundColor: "Pink",
   playerCharacter: "Furball",
-  skills: ['Peck', 'Cigarette Offer','Cigarette Offer 2x', 'Peck 2x', 'Continue'] ,
+  skills: ['Peck', 'Cigarette Offer','Cigarette Offer 2x', 'Peck 2x'] ,
   headerIcon: `<img class="character-select-img" src="images/bird.webp">`}
