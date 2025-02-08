@@ -13,7 +13,6 @@ export function pepperRoute() {
 
 
   gnashTeethAction.addEventListener("click", function () {
-    console.log("You have gnashed teeth")
     outcomeMaker();
   })
 
